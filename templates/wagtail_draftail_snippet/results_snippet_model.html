@@ -1,0 +1,26 @@
+{% load i18n wagtailadmin_tags %}
+{% if snippet_model_opts %}
+
+<table class="listing">
+  <col />
+  <col />
+  <col width="16%" />
+  <thead>
+    <tr class="table-headers">
+      <th>{% trans "Snippets" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for model_opts in snippet_model_opts %}
+    <tr>
+      <td class="title">
+        <div class="title-wrapper"><a class="snippet-model-choice" data-app-name="{{ model_opts.app_label }}" data-model-name="{{ model_opts.model_name }}" href="#">{{ model_opts.verbose_name_plural|capfirst }}</a></div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+  <p>{% blocktrans %}No snippet model configured to use in Rich Text editor.{% endblocktrans %}</p>
+{% endif %}
