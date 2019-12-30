@@ -30,5 +30,5 @@ An example frontend template in `affiliates/templates/affiliates/affiliate_snipp
 
 ## Contributors
 
-[Parbhat Puri](https://github.com/Parbhat)
-[Adam Hill](https://github.com/adamghill/)
+- [Parbhat Puri](https://github.com/Parbhat)
+- [Adam Hill](https://github.com/adamghill/)
