@@ -21,7 +21,7 @@ deploy:
   user: travisci
   on:
     tags: true
-    python: '3.6'
+    python: '3.6.6'
   password:
     secure: Zgp66uCPtQSX9Hl7oucO0iSxpQPHhSDBcdp9kiUF9nmT8CI8GjJ7cTsDvjpyj+CUjpu/klubIaTeJU8UeqKrpottXBiwzmuzt5SE3a3dWkoweo0pkcDgB/3jsCLKHt1p2Ky6kvXU2S/D3LHNN6fRu5jgdSLwUbd8e23tJN7Kc7kt2YsC9EMkRbAdHP4dcuXTPHtNU2aoRV4alWTu3djUOt2TSZaBcwqNIthY+nrVmTFEgNU544JlrJFIfsRiCmCUy3kJqCYDOVHidiKLSUmJXjfL/qKgwKIVqTmczPPWXrq+sfNMqWSThTo1xnPUajgooD8SGrrIZbG9Xd8y3gndYXKqvVqs6g2I5QXm4yRBgu6RpxiVbV7l02QSNhMlH0Qxa8ARmb25NVcdApodsbNnTQjH4cbHm7ilhN4aWO29iiwFAPlOYObUbTHSpDsgKiCT7V+SzCsxGp94wZDnjXSNUmYWHK+OFWGFRt+61hE/ZVuJSxhxdFIA7apZM7bTEuRe6cAAY8ueVQIrL1XANzjHd2uxiG+ERVI5qeorufBH7JULUG2EZf3rCxQFqjQra+z/1J6aIo/C98jMuScQPf2n2v8Tiw5O1whYxklCvbTii57iG815uiZJBAu/GmMjaGa9RB6zBEDpPFtLDXJ8kPcJD73aybOgm/UMrrXvXeLXEqQ=
 after_deploy:
