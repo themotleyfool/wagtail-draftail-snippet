@@ -1,9 +1,8 @@
 language: python
 python:
-- 3.6.6
+- 3.6
 cache:
-  directories:
-  - "$HOME/.cache/pip"
+  pip: true
 env:
   global:
   - PACKAGE_NAME=wagtail-draftail-snippet
@@ -17,11 +16,10 @@ script:
 deploy:
   provider: pypi
   server: $PYPI_URL
-  skip_upload_docs: true
+  upload_docs: false
   user: travisci
   on:
     tags: true
-    python: '3.6.6'
   password:
     secure: $TRAVIS_CI_PASSWORD
 after_deploy:
