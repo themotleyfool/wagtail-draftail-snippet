@@ -1,0 +1,28 @@
+language: python
+python:
+- 3.6.6
+cache:
+  directories:
+  - "$HOME/.cache/pip"
+env:
+  global:
+  - PACKAGE_NAME=wagtail-draftail-snippet
+  - PIP_INDEX_URL=$PYPI_URL+simple/
+install:
+- pip install -U pip
+- pip install .
+- pip install pytest
+script:
+- pytest
+deploy:
+  provider: pypi
+  server: $PYPI_URL
+  skip_upload_docs: true
+  user: travisci
+  on:
+    tags: true
+    python: '3.6.6'
+  password:
+    secure: $TRAVIS_CI_PASSWORD
+after_deploy:
+- curl -X POST "$PIP_INDEX_URL$PACKAGE_NAME/refresh"
