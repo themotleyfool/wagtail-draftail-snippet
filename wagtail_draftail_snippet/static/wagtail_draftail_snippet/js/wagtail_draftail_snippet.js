@@ -160,21 +160,26 @@
     }
   }
 
-  const SnippetDecorator = (props) => {
+  const SnippetLink = props => {
     const { entityKey, contentState } = props;
     const data = contentState.getEntity(entityKey).getData();
 
-    return React.createElement('a', {
-      role: 'button',
-      onMouseUp: () => {
-          window.open(`${data.edit_link}`);
-      },
-    }, props.children);
+    let icon = React.createElement(window.wagtail.components.Icon, {name: 'snippet'});
+    let label = data.string || '';
+
+    return React.createElement(TooltipEntity, {
+      entityKey: props.entityKey,
+      children: props.children,
+      onEdit: props.onEdit,
+      onRemove: props.onRemove,
+      icon: icon,
+      label: label
+    });
   };
 
   window.draftail.registerPlugin({
     type: 'SNIPPET',
     source: SnippetModalWorkflowSource,
-    decorator: SnippetDecorator,
+    decorator: SnippetLink,
   });
 })();
