@@ -22,7 +22,7 @@ An example frontend template in `affiliates/templates/affiliates/affiliate_snipp
 ```
 
 
-## Build library
+## Build the library
 
 1. `poetry build`
 
@@ -31,3 +31,8 @@ An example frontend template in `affiliates/templates/affiliates/affiliate_snipp
 
 - [Parbhat Puri](https://github.com/Parbhat)
 - [Adam Hill](https://github.com/adamghill/)
+
+
+## License
+
+[BSD](https://github.com/themotleyfool/wagtail-draftail-snippet/blob/master/LICENSE)
