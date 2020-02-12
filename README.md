@@ -23,6 +23,9 @@ An example frontend template in `affiliates/templates/affiliates/affiliate_snipp
 <a href="{{ object.url }}" data-vars-action="content-cta" data-vars-label="{{ object.slug }}" rel="sponsored">
 ```
 
+## Requirements
+
+The package requires Wagtail 2.5 or above.
 
 ## Build the library
 
