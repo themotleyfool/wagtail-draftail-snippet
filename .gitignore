@@ -1,1 +1,12 @@
 .venv
+.idea/
+MANIFEST
+*.pyc
+*.egg-info
+dist/
+*.egg
+*.tar.gz
+.eggs/
+.DS_Store
+.cache/
+.pytest_cache/

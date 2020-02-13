@@ -10,7 +10,7 @@ env:
 install:
 - pip install -U pip
 - pip install .
-- pip install pytest
+- pip install pytest pytest-django pytest-pythonpath wagtail-factories
 script:
 - pytest
 deploy:
