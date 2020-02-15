@@ -1,22 +1,28 @@
 import pytest
-
-from tests.testapp import factories
 from wagtail_draftail_snippet.richtext import SnippetLinkHandler
 
 
-@pytest.mark.django_db
-def test_snippet_link_handler():
-    advert = factories.AdvertFactory(text='advert', url='https://www.example.com')
-    advert.save()
+class TestSnippetLinkHandler:
+    @pytest.mark.django_db
+    def test_advert_setup_correctly(self, advert):
+        assert advert.text == "advert"
+        assert advert.url == "https://www.example.com"
 
-    assert advert.text == 'advert'
-    assert advert.url == 'https://www.example.com'
+    @pytest.mark.django_db
+    def test_snippet_create_empty_link_on_error(self, advert):
+        """
+        Empty link created in case of exception
+        """
 
-    # Empty link created in case of exception
-    result = SnippetLinkHandler.expand_db_attributes({'id': 0})
-    assert result == "<a>"
+        result = SnippetLinkHandler.expand_db_attributes({"id": 0})
+        assert result == "<a>"
 
-    # Test snippet template render correctly
-    attrs = {'id': 1, 'data-app-name': 'testapp', 'data-model-name': 'Advert'}
-    result = SnippetLinkHandler.expand_db_attributes(attrs)
-    assert result == f'<a href="{ advert.url }/{ advert.id }">'
+    @pytest.mark.django_db
+    def test_snippet_link_handler_renders(self, advert):
+        """
+        Test snippet template renders correctly
+        """
+
+        attrs = {"id": 1, "data-app-name": "testapp", "data-model-name": "Advert"}
+        result = SnippetLinkHandler.expand_db_attributes(attrs)
+        assert result == f'<a href="{advert.url}/{advert.id}">'

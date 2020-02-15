@@ -31,6 +31,9 @@ The package requires Wagtail 2.5 or above.
 
 1. `poetry build`
 
+## Run tests
+1. `poetry install --dev`
+1. `poetry run pytest`
 
 ## Contributors
 
