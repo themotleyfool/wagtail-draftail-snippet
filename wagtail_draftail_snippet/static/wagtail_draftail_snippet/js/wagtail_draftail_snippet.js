@@ -11,6 +11,10 @@
 
   const $ = global.jQuery;
 
+  const MUTABILITY = {};
+  MUTABILITY['SNIPPET'] = 'MUTABLE';
+  MUTABILITY['SNIPPET-EMBED'] = 'IMMUTABLE';
+
   const getSnippetModelChooserConfig = () => {
     let url;
     let urlParams;
@@ -113,7 +117,7 @@
       const selection = editorState.getSelection();
 
       const entityData = filterSnippetEntityData(entityType, data);
-      const mutability = 'MUTABLE';
+      const mutability = MUTABILITY[entityType.type];
       const contentWithEntity = content.createEntity(entityType.type, mutability, entityData);
       const entityKey = contentWithEntity.getLastCreatedEntityKey();
 
@@ -177,9 +181,32 @@
     });
   };
 
+  const SnippetEmbed = props => {
+    const { entity, onRemoveEntity } = props.blockProps;
+    const data = entity.getData();
+
+    let icon = React.createElement(window.wagtail.components.Icon, {name: 'media'});
+    let label = data.string || '';
+
+    return React.createElement(TooltipEntity, {
+      entityKey: props.entityKey,
+      children: props.children,
+      onEdit: props.onEdit,
+      onRemove: props.onRemove,
+      icon: icon,
+      label: label
+    });
+  };
+
   window.draftail.registerPlugin({
     type: 'SNIPPET',
     source: SnippetModalWorkflowSource,
     decorator: SnippetLink,
+  });
+
+  window.draftail.registerPlugin({
+    type: 'SNIPPET-EMBED',
+    source: SnippetModalWorkflowSource,
+    block: SnippetEmbed,
   });
 })();

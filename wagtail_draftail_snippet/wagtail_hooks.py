@@ -7,7 +7,10 @@ import wagtail.admin.rich_text.editors.draftail.features as draftail_features
 from wagtail.core import hooks
 
 from . import urls
-from .richtext import ContentstateSnippetLinkConversionRule, SnippetLinkHandler
+from .richtext import (
+    ContentstateSnippetLinkConversionRule, ContentstateSnippetEmbedConversionRule,
+    SnippetEmbedHandler, SnippetLinkHandler
+)
 
 
 @hooks.register("register_rich_text_features")
@@ -32,6 +35,31 @@ def register_snippet_feature(features):
 
     features.register_converter_rule(
         "contentstate", feature_name, ContentstateSnippetLinkConversionRule
+    )
+
+
+@hooks.register("register_rich_text_features")
+def register_snippet_embed_feature(features):
+    feature_name = "snippet-embed"
+    type_ = "SNIPPET-EMBED"
+
+    features.register_embed_type(SnippetEmbedHandler)
+
+    features.register_editor_plugin(
+        "draftail",
+        feature_name,
+        draftail_features.EntityFeature(
+            {"type": type_, "icon": "media", "description": ugettext("Snippet Embed")},
+            js=[
+                "wagtailsnippets/js/snippet-chooser-modal.js",
+                "wagtail_draftail_snippet/js/snippet-model-chooser-modal.js",
+                "wagtail_draftail_snippet/js/wagtail_draftail_snippet.js",
+            ],
+        ),
+    )
+
+    features.register_converter_rule(
+        "contentstate", feature_name, ContentstateSnippetEmbedConversionRule
     )
 
 

@@ -3,7 +3,7 @@ from django.template.loader import TemplateDoesNotExist, get_template
 from wagtail.admin.modal_workflow import render_modal_workflow
 from wagtail.snippets.models import get_snippet_models
 
-from .utils import get_snippet_frontend_template
+from .utils import get_snippet_frontend_template, get_snippet_embed_frontend_template
 
 
 def choose_snippet_model(request):
@@ -11,14 +11,28 @@ def choose_snippet_model(request):
 
     # Only display those snippet models which have snippet frontend template
     for snippet_model in get_snippet_models():
+        snippet_included = False
         snippet_frontend_template = get_snippet_frontend_template(
             snippet_model._meta.app_label, snippet_model._meta.model_name
         )
+        snippet_embed_frontend_template = get_snippet_embed_frontend_template(
+            snippet_model._meta.app_label, snippet_model._meta.model_name
+        )
+
         try:
             get_template(snippet_frontend_template)
             snippet_model_opts.append(snippet_model._meta)
+            snippet_included = True
         except TemplateDoesNotExist:
             pass
+
+        if not snippet_included:
+            try:
+                get_template(snippet_embed_frontend_template)
+                snippet_model_opts.append(snippet_model._meta)
+                snippet_included = True
+            except TemplateDoesNotExist:
+                pass
 
     return render_modal_workflow(
         request,
