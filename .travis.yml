@@ -1,14 +1,11 @@
 language: python
 python:
 - 3.6
-cache:
-  pip: true
-env:
-  global:
-  - PACKAGE_NAME=wagtail-draftail-snippet
-  - PIP_INDEX_URL=$PYPI_URL+simple/
+- 3.7
+- 3.8
+cache: pip
 install:
-- pip install -U pip
+- pip install -U pip setuptools
 - pip install .
 - pip install pytest pytest-django pytest-pythonpath wagtail-factories
 script:
@@ -16,11 +13,8 @@ script:
 deploy:
   provider: pypi
   server: $PYPI_URL
-  upload_docs: false
-  user: travisci
+  user: "__token__"
+  password: $PYPI_TOKEN
+  skip_existing: true
   on:
     tags: true
-  password:
-    secure: $TRAVIS_CI_PASSWORD
-after_deploy:
-- curl -X POST "$PIP_INDEX_URL$PACKAGE_NAME/refresh"
