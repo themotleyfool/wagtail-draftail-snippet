@@ -144,12 +144,11 @@ class SnippetEmbedElementHandler(AtomicBlockEntityElementHandler):
 
     def create_entity(self, name, attrs, state, contentstate):
         return Entity('SNIPPET-EMBED', 'IMMUTABLE', {
-            "embedtype": "snippet",
             "id": attrs.get("id"),
-            "data-string": attrs.get("string"),
-            "data-edit-link": attrs.get("edit_link"),
-            "data-app-name": attrs.get("app_name"),
-            "data-model-name": attrs.get("model_name"),
+            "string": attrs.get("data-string"),
+            "edit_link": attrs.get("data-edit-link"),
+            "app_name": attrs.get("data-app-name"),
+            "model_name": attrs.get("data-model-name"),
         })
 
 

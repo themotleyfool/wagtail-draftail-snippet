@@ -182,20 +182,15 @@
   };
 
   const SnippetEmbed = props => {
-    const { entity, onRemoveEntity } = props.blockProps;
+    const { entity, onRemoveEntity, entityKey } = props.blockProps;
     const data = entity.getData();
 
-    let icon = React.createElement(window.wagtail.components.Icon, {name: 'media'});
+    let icon = React.createElement(window.wagtail.components.Icon, {name: 'snippet'});
     let label = data.string || '';
 
-    return React.createElement(TooltipEntity, {
-      entityKey: props.entityKey,
-      children: props.children,
-      onEdit: props.onEdit,
-      onRemove: props.onRemove,
-      icon: icon,
-      label: label
-    });
+    return React.createElement("div", {
+      class: "MediaBlock"
+    }, icon, `${label}`);
   };
 
   window.draftail.registerPlugin({
