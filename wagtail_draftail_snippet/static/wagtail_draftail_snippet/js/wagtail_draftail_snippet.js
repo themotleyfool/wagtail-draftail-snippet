@@ -15,15 +15,31 @@
   MUTABILITY['SNIPPET'] = 'MUTABLE';
   MUTABILITY['SNIPPET-EMBED'] = 'IMMUTABLE';
 
-  const getSnippetModelChooserConfig = () => {
+  const getSnippetModelChooserConfig = (entityType) => {
     let url;
     let urlParams;
 
-    return {
-      url: global.chooserUrls.snippetModelChooser,
-      urlParams: {},
-      onload: global.SNIPPET_MODEL_CHOOSER_MODAL_ONLOAD_HANDLERS,
-    };
+    if (entityType.type === 'SNIPPET') {
+      return {
+        url: global.chooserUrls.snippetLinkModelChooser,
+        urlParams: {},
+        onload: global.SNIPPET_MODEL_CHOOSER_MODAL_ONLOAD_HANDLERS,
+      };
+    }
+    else if (entityType.type === 'SNIPPET-EMBED') {
+      return {
+        url: global.chooserUrls.snippetEmbedModelChooser,
+        urlParams: {},
+        onload: global.SNIPPET_MODEL_CHOOSER_MODAL_ONLOAD_HANDLERS,
+      };
+    }
+    else {
+      return {
+        url: null,
+        urlParams: {},
+        onload: {},
+      };
+    }
   };
 
   const getSnippetModelObjectChooserConfig = () => {
@@ -62,7 +78,7 @@
 
     componentDidMount() {
       const { onClose, entityType, entity, editorState } = this.props;
-      const { url, urlParams, onload } = getSnippetModelChooserConfig();
+      const { url, urlParams, onload } = getSnippetModelChooserConfig(entityType);
 
       $(document.body).on('hidden.bs.modal', this.onClose);
 

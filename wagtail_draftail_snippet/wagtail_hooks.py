@@ -67,9 +67,13 @@ def register_snippet_embed_feature(features):
 def editor_js():
     return format_html(
         """
-            <script>window.chooserUrls.snippetModelChooser = '{0}';</script>
+            <script>
+                window.chooserUrls.snippetLinkModelChooser = '{0}';
+                window.chooserUrls.snippetEmbedModelChooser = '{1}';
+            </script>
         """,
-        reverse("wagtaildraftailsnippet:choose_snippet_model"),
+        reverse("wagtaildraftailsnippet:choose_snippet_link_model"),
+        reverse("wagtaildraftailsnippet:choose_snippet_embed_model"),
     )
 
 
