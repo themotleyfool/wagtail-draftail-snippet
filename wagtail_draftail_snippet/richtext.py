@@ -6,7 +6,7 @@ from wagtail.admin.rich_text.converters.contentstate_models import Entity
 from wagtail.admin.rich_text.converters.html_to_contentstate import LinkElementHandler, AtomicBlockEntityElementHandler
 from wagtail.core.rich_text import EmbedHandler, LinkHandler
 
-from .utils import get_snippet_frontend_template, get_snippet_embed_frontend_template
+from .utils import get_snippet_link_frontend_template, get_snippet_embed_frontend_template
 
 
 # Snippet Link
@@ -22,7 +22,7 @@ class SnippetLinkHandler(LinkHandler):
 
     @classmethod
     def get_template(cls, attrs):
-        return get_snippet_frontend_template(
+        return get_snippet_link_frontend_template(
             attrs["data-app-name"], attrs["data-model-name"]
         )
 

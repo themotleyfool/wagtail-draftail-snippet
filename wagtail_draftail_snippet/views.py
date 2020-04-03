@@ -3,7 +3,7 @@ from django.template.loader import TemplateDoesNotExist, get_template
 from wagtail.admin.modal_workflow import render_modal_workflow
 from wagtail.snippets.models import get_snippet_models
 
-from .utils import get_snippet_frontend_template, get_snippet_embed_frontend_template
+from .utils import get_snippet_link_frontend_template, get_snippet_embed_frontend_template
 
 
 def choose_snippet_link_model(request):
@@ -11,7 +11,7 @@ def choose_snippet_link_model(request):
 
     # Only display those snippet models which have snippet link frontend template
     for snippet_model in get_snippet_models():
-        snippet_frontend_template = get_snippet_frontend_template(
+        snippet_frontend_template = get_snippet_link_frontend_template(
             snippet_model._meta.app_label, snippet_model._meta.model_name
         )
 

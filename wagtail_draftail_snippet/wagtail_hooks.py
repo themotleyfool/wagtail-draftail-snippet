@@ -14,8 +14,8 @@ from .richtext import (
 
 
 @hooks.register("register_rich_text_features")
-def register_snippet_feature(features):
-    feature_name = "snippet"
+def register_snippet_link_feature(features):
+    feature_name = "snippet-link"
     type_ = "SNIPPET"
 
     features.register_link_type(SnippetLinkHandler)
@@ -24,7 +24,7 @@ def register_snippet_feature(features):
         "draftail",
         feature_name,
         draftail_features.EntityFeature(
-            {"type": type_, "icon": "snippet", "description": ugettext("Snippet")},
+            {"type": type_, "icon": "snippet", "description": ugettext("Snippet Link")},
             js=[
                 "wagtailsnippets/js/snippet-chooser-modal.js",
                 "wagtail_draftail_snippet/js/snippet-model-chooser-modal.js",
