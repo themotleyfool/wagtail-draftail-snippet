@@ -3,13 +3,13 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext
 
-import wagtail.admin.rich_text.editors.draftail.features as draftail_features
+from wagtail.admin.rich_text.editors.draftail import features as draftail_features
 from wagtail.core import hooks
 
 from . import urls
 from .richtext import (
     ContentstateSnippetLinkConversionRule, ContentstateSnippetEmbedConversionRule,
-    SnippetEmbedHandler, SnippetLinkHandler
+    SnippetLinkHandler, SnippetEmbedHandler,
 )
 
 
@@ -28,7 +28,7 @@ def register_snippet_link_feature(features):
             js=[
                 "wagtailsnippets/js/snippet-chooser-modal.js",
                 "wagtail_draftail_snippet/js/snippet-model-chooser-modal.js",
-                "wagtail_draftail_snippet/js/wagtail_draftail_snippet.js",
+                "wagtail_draftail_snippet/js/wagtail-draftail-snippet.js",
             ],
         ),
     )
@@ -49,11 +49,11 @@ def register_snippet_embed_feature(features):
         "draftail",
         feature_name,
         draftail_features.EntityFeature(
-            {"type": type_, "icon": "media", "description": ugettext("Snippet Embed")},
+            {"type": type_, "icon": "code", "description": ugettext("Snippet Embed")},
             js=[
                 "wagtailsnippets/js/snippet-chooser-modal.js",
                 "wagtail_draftail_snippet/js/snippet-model-chooser-modal.js",
-                "wagtail_draftail_snippet/js/wagtail_draftail_snippet.js",
+                "wagtail_draftail_snippet/js/wagtail-draftail-snippet.js",
             ],
         ),
     )
@@ -72,8 +72,8 @@ def editor_js():
                 window.chooserUrls.snippetEmbedModelChooser = '{1}';
             </script>
         """,
-        reverse("wagtaildraftailsnippet:choose_snippet_link_model"),
-        reverse("wagtaildraftailsnippet:choose_snippet_embed_model"),
+        reverse("wagtaildraftailsnippet:choose-snippet-link-model"),
+        reverse("wagtaildraftailsnippet:choose-snippet-embed-model"),
     )
 
 
