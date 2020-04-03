@@ -1,5 +1,10 @@
 # wagtail-draftail-snippet
 
+The project provides the following draftail (Wagtail Richtext editor) features:
+
+1. `snippet-link`: Allows to create a link using the snippet chooser modal. The link is rendered using the template `{app_name}/{model_name}_snippet_link.html`.
+1. `snippet-embed`: Allows to embed a block using the snippet chooser modal. The block is embedded using the template `{app_name}/{model_name}_snippet_embed.html`.
+
 Wagtail has support for adding numerous types of links to `RichTextBlock` content, but there is not a way to tie a link to an arbitrary `snippet` model currently. `wagtail-draftail-snippet` provides a way to add a new button to the Draftail rich text editor, which creates an `a href` element for a specific `snippet` model based on a template that can be provided.
 
 ![Demo of wagtail-draftail-snippet plugin](https://i.imgur.com/pyX25hg.gif)
@@ -8,8 +13,8 @@ Wagtail has support for adding numerous types of links to `RichTextBlock` conten
 
 1. `pip install wagtail-draftail-snippet`
 1. Add `wagtail_draftail_snippet` to `INSTALLED_APPS` in Django settings
-1. Add `"snippet"` to the `features` keyword list argument when instantiating a `RichTextBlock`, e.g. `paragraph = RichTextBlock(features=["bold", "italic", "h1", "h2", "h3", "snippet"])`
-1. Create a frontend template to determine how the snippet model will be rendered. Frontend templates are required for a snippet to  be selected and are discovered when they match a path like `{app_name}/{model_name}_snippet.html`. For example, if you have an `Affiliate` snippet model in `affiliates/models.py`, then a file in `affiliates/templates/affiliates/affiliate_snippet.html` would be required.
+1. Add `"snippet-link"` and `"snippet-embed"` to the `features` keyword list argument when instantiating a `RichTextBlock`, e.g. `paragraph = RichTextBlock(features=["bold", "italic", "h1", "h2", "h3", "snippet-link", "snippet-embed"])`
+1. Create a frontend template to determine how the snippet model will be rendered. Frontend templates are required for a snippet to  be selected and are discovered when they match a path like `{app_name}/{model_name}_snippet_link.html` and `{app_name}/{model_name}_snippet_embed.html`. For example, if you have an `Affiliate` snippet model in `affiliates/models.py`, then a file in `affiliates/templates/affiliates/affiliate_snippet_link.html` and `affiliates/templates/affiliates/affiliate_snippet_embed.html` would be required.
 
 
 ## Example use-case
@@ -18,7 +23,7 @@ Wagtail is used for a content site that will display articles that have affiliat
 
 When the content gets rendered, it uses the specific affiliate model to get the URL stored in the snippet model. If the affiliate's URL ever changes, the snippet can be changed in the Wagtail admin, and the all of the content will use the correct link when rendered.
 
-An example frontend template in `affiliates/templates/affiliates/affiliate_snippet.html` could be the following.
+An example frontend template in `affiliates/templates/affiliates/affiliate_snippet_link.html` could be the following.
 ```
 <a href="{{ object.url }}" data-vars-action="content-cta" data-vars-label="{{ object.slug }}" rel="sponsored">
 ```
