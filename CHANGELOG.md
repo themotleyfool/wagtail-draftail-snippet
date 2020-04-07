@@ -1,3 +1,10 @@
+# 0.3.0
+Adds the ability for snippets to be either a link (current functionality) or a block element.
+
+## Breaking changes
+- `snippet` Wagtail feature renamed to `snippet-link`
+- template search looks for `{model}_snippet_link.html` instead of `{model}_snippet.html`
+
 # 0.2.2
 Update travis-ci configuration.
 

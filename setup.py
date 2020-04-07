@@ -21,7 +21,7 @@ if os.path.exists(readme_path):
 setup(
     long_description=readme,
     name='wagtail-draftail-snippet',
-    version='0.2.2',
+    version='0.3.0',
     description='Associate RichTextBlock text content to a snippet model.',
     python_requires='==3.*,>=3.6.0',
     project_urls={
