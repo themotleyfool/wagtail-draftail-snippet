@@ -38,6 +38,15 @@ setup(
             "templates/wagtail_draftail_snippet/*.html",
         ]
     },
-    install_requires=[],
-    extras_require={"dev": ["pytest==3.*,>=3.0.0"]},
+    install_requires=["wagtail==2.*,>=2.5.0"],
+    extras_require={
+        "dev": [
+            "black==19.*,>=19.10.0",
+            "flake8==3.*,>=3.7.9",
+            "pytest==3.*,>=3.0.0",
+            "pytest-django==3.*,>=3.8.0",
+            "pytest-pythonpath==0.*,>=0.7.3",
+            "wagtail-factories==2.*,>=2.0.0",
+        ]
+    },
 )
