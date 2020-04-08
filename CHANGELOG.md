@@ -1,3 +1,6 @@
+# 0.3.1
+Fix readme so it displays on PyPI.
+
 # 0.3.0
 Adds the ability for snippets to be either a link (current functionality) or a block element.
 

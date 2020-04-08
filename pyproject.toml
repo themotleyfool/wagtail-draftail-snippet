@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wagtail-draftail-snippet"
-version = "0.3.0"
+version = "0.3.1"
 description = "Associate RichTextBlock text content to a snippet model."
 authors = ["Parbhat Puri <me@parbhatpuri.com>", "Adam Hill <ahill@fool.com>"]
 repository = "https://github.com/themotleyfool/wagtail-draftail-snippet"
@@ -9,14 +9,15 @@ license = "BSD-3-Clause"
 
 [tool.poetry.dependencies]
 python = "^3.6"
+wagtail = "^2.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
-wagtail = "^2.5"
 pytest-django = "^3.8"
 pytest-pythonpath = "^0.7.3"
 wagtail-factories = "^2.0"
 flake8 = "^3.7.9"
+black = {version = "^19.10b0", allow-prereleases = true}
 
 [build-system]
 requires = ["poetry>=0.12"]
