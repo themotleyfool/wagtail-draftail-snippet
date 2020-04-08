@@ -32,8 +32,7 @@ class SnippetLinkHandler(LinkHandler):
             snippet_obj = cls.get_instance(attrs)
             template = cls.get_template(attrs)
             return render_to_string(template, {"object": snippet_obj})
-        except Exception as e:
-            raise e
+        except Exception:
             return "<a>"
 
 
