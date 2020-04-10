@@ -9,7 +9,7 @@ The project provides the following draftail (Wagtail Richtext editor) features:
 
 Unsure whether you want to use a snippet link or embed? Embeds have complete flexibility, but 1) break the flow of text in the Draftail richtext editor and 2) can't be used to link arbitrary text. If you want to render a link to a snippet model inside of body copy, then you probably want to use the snippet link. For anything else, the embed can be used.
 
-![Demo of wagtail-draftail-snippet plugin](https://i.imgur.com/pyX25hg.gif)
+![Demo of wagtail-draftail-snippet plugin](draftail-snippet-demo.gif)
 
 ## Install
 
