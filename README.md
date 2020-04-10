@@ -1,6 +1,6 @@
 # wagtail-draftail-snippet
 
-Wagtail has support for adding numerous types of links to `RichTextBlock` content, but there is not a way to tie a link to an arbitrary `snippet` model currently. `wagtail-draftail-snippet` provides a way to create either an `a href` element for a specific `snippet` model based on a template that can be provided, or a completely free-form piece of HTML for a snippet.
+Wagtail has support for adding numerous types of links to `RichText` content, but there is not a way to tie a link to an arbitrary `snippet` model currently. `wagtail-draftail-snippet` provides a way to create either an `a href` element for a specific `snippet` model based on a template that can be provided, or a completely free-form piece of HTML for a snippet.
 
 The project provides the following draftail (Wagtail Richtext editor) features:
 
