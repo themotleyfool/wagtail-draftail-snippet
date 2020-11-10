@@ -11,31 +11,31 @@ except ImportError:
 
 import os.path
 
-readme = ''
+readme = ""
 here = os.path.abspath(os.path.dirname(__file__))
-readme_path = os.path.join(here, 'README.rst')
+readme_path = os.path.join(here, "README.md")
 if os.path.exists(readme_path):
-    with open(readme_path, 'rb') as stream:
-        readme = stream.read().decode('utf8')
+    with open(readme_path, "rb") as stream:
+        readme = stream.read().decode("utf8")
 
 setup(
     long_description=readme,
-    name='wagtail-draftail-snippet',
-    version='0.3.0',
-    description='Associate RichTextBlock text content to a snippet model.',
-    python_requires='==3.*,>=3.6.0',
+    long_description_content_type="text/markdown",
+    name="wagtail-draftail-snippet",
+    version="0.3.2",
+    description="Associate RichTextBlock text content to a snippet model.",
+    python_requires="==3.*,>=3.6.0",
     project_urls={
-        "repository":
-            "https://github.com/themotleyfool/wagtail-draftail-snippet"
+        "repository": "https://github.com/themotleyfool/wagtail-draftail-snippet"
     },
-    author='Adam Hill',
-    author_email='ahill@fool.com',
-    packages=['wagtail_draftail_snippet'],
+    author="Parbhat Puri",
+    author_email="me@parbhatpuri.com",
+    packages=["wagtail_draftail_snippet"],
     package_dir={"": "."},
     package_data={
         "wagtail_draftail_snippet": [
             "static/wagtail_draftail_snippet/js/*.js",
-            "templates/wagtail_draftail_snippet/*.html"
+            "templates/wagtail_draftail_snippet/*.html",
         ]
     },
     install_requires=[],
