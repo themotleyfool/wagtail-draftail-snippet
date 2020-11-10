@@ -68,10 +68,12 @@ def editor_js():
     return format_html(
         """
             <script>
-                window.chooserUrls.snippetLinkModelChooser = '{0}';
-                window.chooserUrls.snippetEmbedModelChooser = '{1}';
+                window.chooserUrls.snippetChooser = '{0}';
+                window.chooserUrls.snippetLinkModelChooser = '{1}';
+                window.chooserUrls.snippetEmbedModelChooser = '{2}';
             </script>
         """,
+        reverse('wagtailsnippets:choose_generic'),
         reverse("wagtaildraftailsnippet:choose-snippet-link-model"),
         reverse("wagtaildraftailsnippet:choose-snippet-embed-model"),
     )
