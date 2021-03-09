@@ -1,0 +1,26 @@
+# This workflow integrates ShiftLeft NG SAST with GitHub
+# Visit https://docs.shiftleft.io for help
+name: Analyze with ShiftLeft NG SAST
+
+on:
+  pull_request: # include to analyze when you create a pull request
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  NGSAST:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download ShiftLeft cli
+      run: |
+        curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
+    - name: Python
+      run: ${GITHUB_WORKSPACE}/sl analyze --verbose --tag app.group=wagtail-draftail-snippet --app wagtail-draftail-snippet-python --tag branch=${GITHUB_REF} --python $(pwd)
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
+    - name: Javascript
+      run: ${GITHUB_WORKSPACE}/sl analyze --verbose --tag app.group=wagtail-draftail-snippet --app wagtail-draftail-snippet-javascript --tag branch=${GITHUB_REF} --js --cpg $(pwd)
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
