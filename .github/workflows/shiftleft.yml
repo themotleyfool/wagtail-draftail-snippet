@@ -26,5 +26,6 @@ jobs:
         [ -f requirements.txt ]         && pip install -r requirements.txt
         [ -f requirements/default.txt ] && pip install -r requirements/default.txt
         ${GITHUB_WORKSPACE}/sl analyze --tag app.group=$REPOSITORY_NAME --app ${REPOSITORY_NAME}-python --cpg --tag branch=${GITHUB_REF} --python $(pwd)
+        echo "Hello world!"
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
