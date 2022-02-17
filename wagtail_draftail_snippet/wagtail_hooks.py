@@ -8,8 +8,10 @@ from wagtail.core import hooks
 
 from . import urls
 from .richtext import (
-    ContentstateSnippetLinkConversionRule, ContentstateSnippetEmbedConversionRule,
-    SnippetLinkHandler, SnippetEmbedHandler,
+    ContentstateSnippetLinkConversionRule,
+    ContentstateSnippetEmbedConversionRule,
+    SnippetLinkHandler,
+    SnippetEmbedHandler,
 )
 
 
@@ -65,18 +67,16 @@ def register_snippet_embed_feature(features):
 
 @hooks.register("insert_editor_js")
 def editor_js():
-    return format_html(
-        """
+
+    html = f"""
             <script>
-                window.chooserUrls.snippetChooser = '{0}';
-                window.chooserUrls.snippetLinkModelChooser = '{1}';
-                window.chooserUrls.snippetEmbedModelChooser = '{2}';
-            </script>
-        """,
-        reverse('wagtailsnippets:choose_generic'),
-        reverse("wagtaildraftailsnippet:choose-snippet-link-model"),
-        reverse("wagtaildraftailsnippet:choose-snippet-embed-model"),
-    )
+                window.chooserUrls.snippetChooser = '{reverse('wagtaildraftailsnippet:choose_generic')}';
+                window.chooserUrls.snippetLinkModelChooser = '{reverse("wagtaildraftailsnippet:choose-snippet-link-model")}';
+                window.chooserUrls.snippetEmbedModelChooser = '{reverse("wagtaildraftailsnippet:choose-snippet-embed-model")}';
+            </script>    
+            """
+
+    return format_html(html)
 
 
 @hooks.register("register_admin_urls")
