@@ -9,6 +9,7 @@
 
   const TooltipEntity = window.draftail.TooltipEntity;
 
+  const global = globalThis;
   const $ = global.jQuery;
 
   const MUTABILITY = {};
