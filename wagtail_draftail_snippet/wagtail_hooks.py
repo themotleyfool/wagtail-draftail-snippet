@@ -1,7 +1,7 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.urls import reverse
 from django.utils.html import format_html
-from django.utils.translation import ugettext
+from django.utils.translation import gettext
 
 from wagtail.admin.rich_text.editors.draftail import features as draftail_features
 from wagtail.core import hooks
@@ -26,7 +26,7 @@ def register_snippet_link_feature(features):
         "draftail",
         feature_name,
         draftail_features.EntityFeature(
-            {"type": type_, "icon": "snippet", "description": ugettext("Snippet Link")},
+            {"type": type_, "icon": "snippet", "description": gettext("Snippet Link")},
             js=[
                 "wagtailsnippets/js/snippet-chooser-modal.js",
                 "wagtail_draftail_snippet/js/snippet-model-chooser-modal.js",
@@ -51,7 +51,7 @@ def register_snippet_embed_feature(features):
         "draftail",
         feature_name,
         draftail_features.EntityFeature(
-            {"type": type_, "icon": "code", "description": ugettext("Snippet Embed")},
+            {"type": type_, "icon": "code", "description": gettext("Snippet Embed")},
             js=[
                 "wagtailsnippets/js/snippet-chooser-modal.js",
                 "wagtail_draftail_snippet/js/snippet-model-chooser-modal.js",
@@ -81,4 +81,4 @@ def editor_js():
 
 @hooks.register("register_admin_urls")
 def register_admin_urls():
-    return [url(r"^snippets/", include(urls, namespace="wagtaildraftailsnippet"))]
+    return [path("snippets/", include(urls, namespace="wagtaildraftailsnippet"))]
