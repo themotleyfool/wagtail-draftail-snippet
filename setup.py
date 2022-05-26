@@ -22,7 +22,7 @@ setup(
     long_description=readme,
     long_description_content_type="text/markdown",
     name="wagtail-draftail-snippet",
-    version="0.4.0",
+    version="0.4.1",
     description="Associate RichTextBlock text content to a snippet model.",
     python_requires="==3.*,>=3.6.0",
     project_urls={

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wagtail-draftail-snippet"
-version = "0.4.0"
+version = "0.4.1"
 description = "Associate RichTextBlock text content to a snippet model."
 authors = ["Parbhat Puri <me@parbhatpuri.com>", "Adam Hill <ahill@fool.com>", "Brady Moe <bmoe872@gmail.com>"]
 repository = "https://github.com/themotleyfool/wagtail-draftail-snippet"

@@ -38,6 +38,10 @@ The package requires Wagtail 2.5 or above.
 
 1. `poetry build`
 
+## Push a new version release to PyPI
+
+Travis-CI will build the library and deploy it to PyPI on every commit to `master` that is tagged with a version.
+
 ## Run tests
 
 1. `poetry install`
