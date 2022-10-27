@@ -1,3 +1,11 @@
+# 0.4.2
+
+Upgrade required version of Wagtail to >=2.15.x (feature implemented in 0.4.0)
+
+# 0.4.1
+
+Support Django 4.x and Wagtail 3.x
+
 # 0.4.0
 
 Fix issue when upgrading to Wagtail 2.14.x.
