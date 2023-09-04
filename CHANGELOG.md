@@ -1,3 +1,7 @@
+# 0.4.3
+
+Support Wagtail 5.x
+
 # 0.4.2
 
 Upgrade required version of Wagtail to >=2.15.x (feature implemented in 0.4.0)

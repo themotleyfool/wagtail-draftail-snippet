@@ -1,7 +1,15 @@
 import pytest
-from wagtail.core.models import Site
 
 from tests.testapp import factories
+from wagtail import __version__
+
+
+WAGTAIL_MAJOR_VERSION = int(__version__.split(".", 1)[0])
+
+if WAGTAIL_MAJOR_VERSION >= 3:
+    from wagtail.models import Site
+else:
+    from wagtail.core.models import Site
 
 
 @pytest.fixture
