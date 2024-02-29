@@ -4,7 +4,15 @@ from django.template.loader import render_to_string
 from draftjs_exporter.dom import DOM
 from wagtail.admin.rich_text.converters.contentstate_models import Entity
 from wagtail.admin.rich_text.converters.html_to_contentstate import LinkElementHandler, AtomicBlockEntityElementHandler
-from wagtail.core.rich_text import EmbedHandler, LinkHandler
+from wagtail import __version__
+
+WAGTAIL_MAJOR_VERSION = int(__version__.split(".", 1)[0])
+
+
+if WAGTAIL_MAJOR_VERSION >= 3:
+    from wagtail.rich_text import EmbedHandler, LinkHandler
+else:
+    from wagtail.core.rich_text import EmbedHandler, LinkHandler
 
 from .utils import get_snippet_link_frontend_template, get_snippet_embed_frontend_template
 

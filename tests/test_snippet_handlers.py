@@ -51,4 +51,4 @@ class TestSnippetEmbedHandler:
 
         attrs = {"id": 1, "data-app-name": "testapp", "data-model-name": "advert"}
         result = SnippetEmbedHandler.expand_db_attributes(attrs)
-        assert result == f'<div>{advert.text}</div>'
+        assert result == f"<div>{advert.text}</div>"

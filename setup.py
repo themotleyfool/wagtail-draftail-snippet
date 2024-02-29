@@ -22,7 +22,7 @@ setup(
     long_description=readme,
     long_description_content_type="text/markdown",
     name="wagtail-draftail-snippet",
-    version="0.4.2",
+    version="0.4.3",
     description="Associate RichTextBlock text content to a snippet model.",
     python_requires="==3.*,>=3.6.0",
     project_urls={
@@ -38,7 +38,7 @@ setup(
             "templates/wagtail_draftail_snippet/*.html",
         ]
     },
-    install_requires=["wagtail>=2.15.0,<4.0"],
+    install_requires=["wagtail>=2.15.0,<6.0"],
     extras_require={
         "dev": [
             "black==19.*,>=19.10.0",

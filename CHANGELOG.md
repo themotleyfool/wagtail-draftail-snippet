@@ -1,3 +1,8 @@
+# 0.4.3 (Unreleased)
+###### https://github.com/themotleyfool/wagtail-draftail-snippet/pull/33/files
+
+Support Wagtail 5.x
+
 # 0.4.2
 
 Upgrade required version of Wagtail to >=2.15.x (feature implemented in 0.4.0)
